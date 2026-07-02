@@ -1,10 +1,11 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { Code2, ExternalLink, Mail, MapPin, Phone } from "lucide-react";
-import { AnimatedSection, SectionHeading } from "./AnimatedSection";
 import { siteConfig } from "@/data/portfolio";
+import { FadeUp, SectionHeader } from "./ui/SectionHeader";
 
-const contactLinks = [
+const links = [
   {
     icon: Mail,
     label: "Email",
@@ -26,7 +27,7 @@ const contactLinks = [
   {
     icon: ExternalLink,
     label: "LinkedIn",
-    value: "yahya-sheikh",
+    value: "Connect",
     href: siteConfig.linkedin,
   },
   {
@@ -39,17 +40,25 @@ const contactLinks = [
 
 export function Contact() {
   return (
-    <AnimatedSection id="contact" className="section-padding">
-      <div className="mx-auto max-w-6xl px-6">
-        <SectionHeading
-          label="/ contact"
+    <FadeUp id="contact" className="section-padding relative">
+      <div className="absolute inset-0 bg-gradient-to-t from-maroon/10 to-transparent" />
+      <div className="relative mx-auto max-w-7xl px-6">
+        <SectionHeader
+          eyebrow="Connect"
           title="Get In Touch"
-          subtitle="Open to Data Analyst and Business Intelligence roles. Let's connect."
+          subtitle="Open to Data Analyst and Business Intelligence roles. Let's build something intelligent."
+          align="center"
         />
 
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {contactLinks.map((link) => (
-            <div key={link.label}>
+        <div className="mx-auto grid max-w-4xl gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {links.map((link, i) => (
+            <motion.div
+              key={link.label}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.08 }}
+            >
               {link.href ? (
                 <a
                   href={link.href}
@@ -59,31 +68,41 @@ export function Contact() {
                       ? "noopener noreferrer"
                       : undefined
                   }
-                  className="group flex items-center gap-4 rounded-xl border border-border bg-card p-5 transition-all hover:-translate-y-0.5 hover:border-maroon hover:shadow-lg"
+                  data-cursor
+                  data-cursor-label="GO"
+                  className="glass group flex items-center gap-4 rounded-2xl p-5 transition-all hover:border-maroon/40 hover:glow-maroon"
                 >
-                  <div className="flex h-11 w-11 items-center justify-center rounded-full bg-maroon/10 text-maroon transition-colors group-hover:bg-maroon group-hover:text-white dark:text-maroon-light">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-maroon/15 text-maroon-light transition-all group-hover:bg-maroon group-hover:text-white">
                     <link.icon size={20} />
                   </div>
                   <div>
-                    <p className="text-xs text-muted">{link.label}</p>
-                    <p className="font-medium text-foreground">{link.value}</p>
+                    <p className="text-[10px] uppercase tracking-widest text-muted">
+                      {link.label}
+                    </p>
+                    <p className="font-display font-semibold text-foreground">
+                      {link.value}
+                    </p>
                   </div>
                 </a>
               ) : (
-                <div className="flex items-center gap-4 rounded-xl border border-border bg-card p-5">
-                  <div className="flex h-11 w-11 items-center justify-center rounded-full bg-maroon/10 text-maroon dark:text-maroon-light">
+                <div className="glass flex items-center gap-4 rounded-2xl p-5">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-maroon/15 text-maroon-light">
                     <link.icon size={20} />
                   </div>
                   <div>
-                    <p className="text-xs text-muted">{link.label}</p>
-                    <p className="font-medium text-foreground">{link.value}</p>
+                    <p className="text-[10px] uppercase tracking-widest text-muted">
+                      {link.label}
+                    </p>
+                    <p className="font-display font-semibold text-foreground">
+                      {link.value}
+                    </p>
                   </div>
                 </div>
               )}
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
-    </AnimatedSection>
+    </FadeUp>
   );
 }

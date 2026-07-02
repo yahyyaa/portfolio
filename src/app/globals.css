@@ -1,27 +1,87 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #1a1a1a;
-  --muted: #6b7280;
-  --border: #e5e7eb;
-  --card: #ffffff;
+  --background: #0a0505;
+  --foreground: #f5ecec;
+  --muted: #c4a8a8;
+  --border: rgba(128, 0, 0, 0.25);
+  --card: rgba(20, 8, 8, 0.65);
   --maroon: #800000;
-  --maroon-dark: #5c0000;
-  --maroon-light: #a52a2a;
-  --section-alt: #faf8f8;
+  --maroon-dark: #4a0000;
+  --maroon-light: #b83333;
+  --maroon-glow: rgba(184, 51, 51, 0.45);
+  --section-alt: #0f0606;
+  --glass: rgba(255, 255, 255, 0.04);
+  --glass-border: rgba(255, 255, 255, 0.08);
 }
 
-.dark {
-  --background: #111111;
-  --foreground: #f5f5f5;
-  --muted: #9ca3af;
-  --border: #2a2a2a;
-  --card: #1a1a1a;
-  --maroon: #a52a2a;
-  --maroon-dark: #800000;
-  --maroon-light: #c44;
-  --section-alt: #161616;
+html {
+  scroll-behavior: auto;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-jakarta), system-ui, sans-serif;
+  cursor: none;
+  overflow-x: hidden;
+}
+
+@media (max-width: 768px), (pointer: coarse) {
+  body {
+    cursor: auto;
+  }
+}
+
+.section-padding {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+.glass {
+  background: var(--glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+}
+
+.glass-strong {
+  background: rgba(15, 5, 5, 0.75);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(128, 0, 0, 0.3);
+}
+
+.glow-maroon {
+  box-shadow: 0 0 40px var(--maroon-glow), 0 0 80px rgba(128, 0, 0, 0.15);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #ffffff 0%, #e8c4c4 45%, #b83333 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(128, 0, 0, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(128, 0, 0, 0.06) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+::selection {
+  background: rgba(128, 0, 0, 0.5);
+  color: #fff;
 }
 
 @theme inline {
@@ -34,26 +94,6 @@
   --color-maroon-dark: var(--maroon-dark);
   --color-maroon-light: var(--maroon-light);
   --color-section-alt: var(--section-alt);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-geist-sans), system-ui, sans-serif;
-}
-
-.section-padding {
-  padding-top: 5rem;
-  padding-bottom: 5rem;
-}
-
-::selection {
-  background: color-mix(in srgb, var(--maroon) 25%, transparent);
-  color: var(--foreground);
+  --font-sans: var(--font-jakarta);
+  --font-display: var(--font-space);
 }

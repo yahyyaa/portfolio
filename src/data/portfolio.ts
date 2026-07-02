@@ -11,57 +11,82 @@ export const siteConfig = {
 };
 
 export const navLinks = [
-  { label: "About", href: "#about" },
-  { label: "Skills", href: "#skills" },
+  { label: "Persona", href: "#about" },
+  { label: "Arsenal", href: "#skills" },
   { label: "Experience", href: "#experience" },
   { label: "Projects", href: "#projects" },
   { label: "Leadership", href: "#leadership" },
   { label: "Contact", href: "#contact" },
 ];
 
-export const stats = [
-  { value: "3.45", label: "CGPA" },
-  { value: "800+", label: "Event Participants" },
-  { value: "30+", label: "Daily Transactions Automated" },
-  { value: "2026", label: "Graduation Year" },
+export const persona = {
+  headline: "Architecting Intelligent Data Experiences",
+  paragraphs: [
+    "I'm Yahya Sheikh, a Data Science graduate merging analytical precision with aesthetic innovation. I don't just build dashboards — I craft digital ecosystems that transform raw data into decisions.",
+    "From Power BI storytelling to Python automation and full-stack apps, I bring technical depth and creative vision to every project — turning ideas into products people can actually use.",
+  ],
+  focus: "Power BI, Python Pipelines, & Full-Stack Analytics.",
+  stats: [
+    { value: 3.45, suffix: "", label: "CGPA", decimals: 2 },
+    { value: 800, suffix: "+", label: "Event Participants", decimals: 0 },
+    { value: 30, suffix: "+", label: "Daily Transactions", decimals: 0 },
+    { value: 9, suffix: "+", label: "Projects Delivered", decimals: 0 },
+  ],
+};
+
+export const technicalArsenal = [
+  {
+    id: "01",
+    title: "Data Analytics & BI",
+    subtitle: "Dashboards & Business Intelligence",
+    proficiency: 92,
+    tools: ["Power BI", "Excel", "DAX", "KPIs"],
+  },
+  {
+    id: "02",
+    title: "Python Development",
+    subtitle: "Automation & Data Engineering",
+    proficiency: 88,
+    tools: ["Python", "Pandas", "Matplotlib", "Automation"],
+  },
+  {
+    id: "03",
+    title: "Full Stack Engineering",
+    subtitle: "Web Apps & APIs",
+    proficiency: 85,
+    tools: ["Node.js", "Express", "JavaScript", "PWA"],
+  },
+  {
+    id: "04",
+    title: "Database Systems",
+    subtitle: "Schema Design & Querying",
+    proficiency: 87,
+    tools: ["MySQL", "SQL", "Database Design"],
+  },
+  {
+    id: "05",
+    title: "Machine Learning",
+    subtitle: "Computer Vision & Deep Learning",
+    proficiency: 78,
+    tools: ["Deep Learning", "RCNN", "OpenCV", "Flask"],
+  },
+  {
+    id: "06",
+    title: "Business Intelligence",
+    subtitle: "Reporting & Insights",
+    proficiency: 90,
+    tools: ["Reporting", "Data Cleaning", "Visualization"],
+  },
 ];
 
-export const aboutText = [
-  "I'm a Data Science graduate from the Institute of Business Management with a passion for transforming complex datasets into clear, actionable insights. From interactive Power BI dashboards to Python automation pipelines and full-stack web apps, I build tools that help teams make smarter decisions faster.",
-  "My experience spans operations analytics at Karachi United, ERP automation at Gerry's International, and leading campus sports events — giving me a unique blend of technical depth and real-world execution.",
-];
+export const projectFilters = [
+  "All",
+  "Power BI",
+  "Python",
+  "Full Stack",
+] as const;
 
-export const skillGroups = [
-  {
-    title: "Data & BI",
-    skills: [
-      "Power BI",
-      "Data Visualization",
-      "Dashboarding",
-      "Excel",
-      "Pivot Tables",
-      "KPIs",
-    ],
-  },
-  {
-    title: "Programming",
-    skills: ["Python", "Java", "C++", "JavaScript", "Node.js"],
-  },
-  {
-    title: "Databases",
-    skills: ["SQL", "MySQL", "Database Design"],
-  },
-  {
-    title: "Core Skills",
-    skills: [
-      "Data Cleaning",
-      "Data Analysis",
-      "Reporting",
-      "Automation",
-      "Business Insights",
-    ],
-  },
-];
+export type ProjectFilter = (typeof projectFilters)[number];
 
 export const experiences = [
   {
@@ -114,6 +139,7 @@ export const projects = [
     description:
       "Full-stack PWA for a paint raw material supplier handling 30+ daily transactions — auto-pricing, PDF generation, accounts ledger, and inventory management.",
     tags: ["Node.js", "Express", "MySQL", "JavaScript", "PWA", "Railway"],
+    category: "Full Stack" as ProjectFilter,
     image: null,
     featured: true,
     status: "Live",
@@ -123,6 +149,7 @@ export const projects = [
     description:
       "Final Year Project: deep learning platform for OPG X-ray analysis with object detection, severity scoring, and clinical recommendations.",
     tags: ["Python", "Deep Learning", "RCNN", "Computer Vision", "Flask"],
+    category: "Python" as ProjectFilter,
     image: "/images/dentrat-analysis.png",
     gallery: [
       "/images/dentrat-dashboard.png",
@@ -137,6 +164,7 @@ export const projects = [
     description:
       "Interactive Power BI dashboard analyzing 5K+ titles — genre distribution, geographic reach, duration patterns, and release trends.",
     tags: ["Power BI", "Data Visualization", "DAX"],
+    category: "Power BI" as ProjectFilter,
     image: "/images/netflix-dashboard.png",
     gallery: ["/images/netflix-dashboard.png", "/images/netflix-dashboard-2.png"],
     featured: true,
@@ -146,6 +174,7 @@ export const projects = [
     description:
       "HR analytics dashboard uncovering attrition drivers across work-life balance, job level, satisfaction scores, and salary trends.",
     tags: ["Power BI", "HR Analytics", "KPIs"],
+    category: "Power BI" as ProjectFilter,
     image: "/images/hr-dashboard.png",
     featured: true,
   },
@@ -154,6 +183,7 @@ export const projects = [
     description:
       "Marketing ROI dashboard tracking 12B+ views across platforms, content types, hashtags, and day-of-week engagement patterns.",
     tags: ["Power BI", "Marketing Analytics", "ROI"],
+    category: "Power BI" as ProjectFilter,
     image: "/images/marketing-dashboard.png",
     featured: true,
   },
@@ -162,6 +192,7 @@ export const projects = [
     description:
       "Operational dashboard for 770 players across 42 institutes — age group breakdowns, board distribution, and institute heatmaps.",
     tags: ["Power BI", "Sports Analytics", "Excel"],
+    category: "Power BI" as ProjectFilter,
     image: "/images/kusc-dashboard.png",
   },
   {
@@ -169,6 +200,7 @@ export const projects = [
     description:
       "Python folder-watching script that automatically matches sales invoices and flags discrepancies for finance teams.",
     tags: ["Python", "Automation", "Odoo"],
+    category: "Python" as ProjectFilter,
     image: null,
   },
   {
@@ -176,6 +208,7 @@ export const projects = [
     description:
       "Football player performance analysis using Pandas and Matplotlib — statistical breakdowns and visual trend reports.",
     tags: ["Python", "Pandas", "Matplotlib"],
+    category: "Python" as ProjectFilter,
     image: null,
   },
   {
@@ -183,7 +216,47 @@ export const projects = [
     description:
       "Relational MySQL database with normalized schema design and complex analytical queries for business reporting.",
     tags: ["MySQL", "SQL", "Database Design"],
+    category: "Full Stack" as ProjectFilter,
     image: null,
+  },
+];
+
+export const credentials = [
+  {
+    id: "01",
+    title: "High Achiever Award",
+    issuer: "Highbrow College",
+    date: "2022",
+    description:
+      "Recognized for outstanding academic performance and leadership during A-Levels.",
+    image: "/images/trophies.png",
+  },
+  {
+    id: "02",
+    title: "Eminent Phoenix Award",
+    issuer: "Highbrow College",
+    date: "2021",
+    description:
+      "Awarded for excellence in extracurricular achievement and community contribution.",
+    image: "/images/trophies.png",
+  },
+  {
+    id: "03",
+    title: "High Achiever Award",
+    issuer: "Beaconhouse School System",
+    date: "O-Levels",
+    description:
+      "Academic distinction award for top performance in O-Level examinations.",
+    image: "/images/trophies.png",
+  },
+  {
+    id: "04",
+    title: "Football Captain",
+    issuer: "University & College Teams",
+    date: "Leadership",
+    description:
+      "Led university and college football teams to multiple championship titles.",
+    image: "/images/trophies.png",
   },
 ];
 
@@ -194,11 +267,6 @@ export const leadership = {
     "Captain — University Football Team",
     "Captain — College Football Team",
   ],
-  awards: [
-    "High Achiever Award — Highbrow College (2022)",
-    "Eminent Phoenix Award — Highbrow College (2021)",
-    "High Achiever Award — Beaconhouse School System (O-Levels)",
-  ],
   image: "/images/trophies.png",
 };
 
@@ -208,17 +276,20 @@ export const education = [
     institution: "Institute of Business Management (IoBM)",
     period: "Expected June 2026",
     detail: "CGPA: 3.45 / 4.0",
+    tags: ["Data Science", "Machine Learning", "Analytics"],
   },
   {
     degree: "A-Levels",
     institution: "Highbrow College",
     period: "2022",
     detail: "High Achiever Award",
+    tags: ["Mathematics", "Statistics", "Leadership"],
   },
   {
     degree: "O-Levels",
     institution: "Beaconhouse School System",
     period: "Completed",
     detail: "High Achiever Award",
+    tags: ["Science", "Academic Excellence"],
   },
 ];
